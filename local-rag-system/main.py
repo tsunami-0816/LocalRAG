@@ -5,7 +5,7 @@ from app.api.endpoints import router
 from app.rag.chain import RagService
 from app.rag.vector_store import VectorStoreManager
 
-app = FastAPI(title="Local RAG System", version="1.0.0")
+app = FastAPI(title="LocalRAG", version="1.0.0")
 
 # CORS 跨域配置
 app.add_middleware(
@@ -63,4 +63,4 @@ app.include_router(router, prefix="/api")
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8004)

@@ -1,0 +1,66 @@
+# 1. 进入项目目录
+cd D:\lg\project\Project1\local-rag-system
+
+# 2. 激活虚拟环境
+.venv\Scripts\Activate.ps1
+
+# 5. 启动项目
+python main.py
+
+
+服务启动成功！ 接下来你可以用以下几种方式使用：
+
+## 📖 方式一：使用 Swagger UI（推荐）
+打开浏览器访问：http://localhost:8000/docs
+
+可以在网页上直接测试所有接口：
+
+1. 点击 /api/upload → Try it out → 选择文件上传
+2. 点击 /api/chat → Try it out → 输入问题
+3. 点击 /api/health → Try it out → 测试服务状态
+
+## 🧪 方式二：运行测试脚本
+打开新的 PowerShell 窗口 （不要关闭当前运行的服务）：
+# 1. 进入项目目录
+cd D:\lg\project\Project1\local-rag-system
+
+# 2. 激活虚拟环境
+.venv\Scripts\Activate.ps1
+
+# 3. 运行测试
+python test_demo.py
+
+测试脚本会自动：
+
+- 清空旧数据
+- 加载测试文档入库
+- 回答 3 个预设问题
+## 📡 方式三：使用 API 接口
+打开新的 PowerShell 窗口 ：
+
+### 上传文档
+curl -X POST "http://localhost:8000/api/upload" -F "file=@你的文档.pdf"
+### 提问
+curl -X POST "http://localhost:8000/api/chat" ^
+  -H "Content-Type: application/json" ^
+  -d '{"question":"什么是 RAG？"}'
+### 健康检查
+curl "http://localhost:8000/api/health"
+
+
+## 📝 实际使用建议
+1. 准备自己的文档 ：将 PDF/DOCX/TXT 文件放入 data/ 目录
+2. 上传文档 ：使用 /api/upload 接口或测试脚本
+3. 提问 ：使用 /api/chat 接口提问，系统会基于你的文档回答
+
+
+## 💡 测试问题示例
+针对已有的测试文档，可以问：
+
+问题 									预期来源 
+什么是 RAG？		 					rag_intro.txt 
+常用的大语言模型有哪些？ 					llm_intro.txt 
+Qdrant 是什么？ 							qdrant_intro.txt
+
+## 🛑 停止服务
+在运行服务的窗口按 Ctrl + C 即可停止。

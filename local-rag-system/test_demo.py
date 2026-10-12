@@ -9,7 +9,7 @@ import json
 import os
 import requests
 
-API_BASE_URL = "http://localhost:8000/api"
+API_BASE_URL = "http://localhost:8001/api"
 
 
 def check_service():
